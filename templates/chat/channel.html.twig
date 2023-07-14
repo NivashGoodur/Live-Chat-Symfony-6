@@ -241,26 +241,18 @@
 
     </div>
 
-  </div>
+  </div> 
 </section>
 
+<script src="{{ asset('js/channel.js') }}"></script>
+
 <script>
-  const eventSource = new EventSource("{{ mercure('https://localhost:8000/channel/1')|escape('js') }}", { withCredentials: true });
+  const eventSource = new EventSource("{{ mercure('https://localhost:8000/channel/{id}')|escape('js') }}", { withCredentials: true });
   eventSource.onmessage = event => {
     // Will be called every time an update is published by the server
     console.log(JSON.parse(event.data));
   }
 </script>
 
-
-<script>
-  const es = new EventSourcePolyfill("{{ mercure('https://example.com/books/1') }}", {
-    headers: {
-      'Authorization': 'Bearer ' + token,
-    }
-  });
-</script>
-
-<script src="{{ asset('js/channel.js') }}"></script>
 
 {% endblock %}

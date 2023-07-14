@@ -1,31 +1,34 @@
-$(document).ready(function() {
-    $("#submit").on("click", function(e) {
-        e.preventDefault();
-        // var title = $("#title").val();
-        // var author = $("#author").val();
-        // var desc = $("#desc").val();
-        // $.ajax({
-        //     url: "includes/SubmitForm.inc.php",
-        //     type: "POST",
-        //     data: {
-        //         title: title,
-        //         author: author,
-        //         desc: desc
-        //     },
-        //     success: function($data) {
-        //         $("#alert").html($data);
-        //         $("#form").trigger("reset");
-        //     }
-        // });
+document.addEventListener("DOMContentLoaded", () => {
+    let formSubmitMessage = document.querySelector('#message_Send');
+    let formMessageContent = "";
 
-        // function Mercure();
-    });
+    formSubmitMessage.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        formMessageContent = document.querySelector("#message_content").value;
+
+        if (formMessageContent != "") {
+
+            const data = { // La variable data sera envoyée au controller
+                'content': formMessageContent // On transmet le message...
+            }
+
+            messageToServer(data);
+        }
+    })
 });
 
-// const Mercure = () => {
-//     const eventSource = new EventSource("{{ mercure('https://localhost:8000/channel/1')|escape('js') }}", { withCredentials: true });
-//     eventSource.onmessage = event => {
-//       // Will be called every time an update is published by the server
-//       console.log(JSON.parse(event.data));
-//     }
-// }
+const messageToServer = (data) => {
+
+    const url = window.location.href+ "/post-message";
+
+    fetch(url, { // On envoie avec un post nos datas sur le endpoint /message de notre application
+        method: 'POST',
+        body: JSON.stringify(data) // On envoie les data sous format JSON
+    }).then((response) => {
+        message.value = '';
+    }).catch((error) => {
+        console.log(error)
+    });
+
+}
