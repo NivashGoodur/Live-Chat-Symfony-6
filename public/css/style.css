@@ -1,0 +1,22 @@
+.gradient-custom {
+    min-height: 100vh;
+    /* fallback for old browsers */
+    background: linear-gradient(109.5deg, rgb(76, 221, 242) 11.2%, rgb(92, 121, 255) 91.1%);
+}
+    
+.mask-custom {
+background: rgba(24, 24, 16, .2);
+border-radius: 2em;
+backdrop-filter: blur(15px);
+border: 2px solid rgba(255, 255, 255, 0.05);
+background-clip: padding-box;
+box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+}
+
+.chat-channel .author-1{
+    background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+}
+
+.chat-channel .author-2{
+    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+}
