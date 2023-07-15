@@ -40,7 +40,7 @@ class ChatController extends AbstractController
         $form = $this->createForm(MessageType::class);
         $form->handleRequest($request);
 
-        
+
         return $this->render('chat/channel.html.twig', [
             'form' => $form->createView(),
             'messages' => $messages,
@@ -59,10 +59,12 @@ class ChatController extends AbstractController
             throw new AccessDeniedHttpException('No data sent');
         }
 
+        $content = trim(strip_tags($data['content']));
+
 
         $NewMessage = new Message();
         $NewMessage
-            ->setContent($data['content'])
+            ->setContent($content)
             ->setdate(new DateTime())
             ->setAuthor($this->getUser())
             ->setChannel($channel);
@@ -72,7 +74,9 @@ class ChatController extends AbstractController
         $update = new Update(
             'https://localhost:8000/channel/1',
             json_encode([
-                'message' => $NewMessage->getContent(),
+                'content' => $NewMessage->getContent(),
+                'authorFirstName' => $NewMessage->getAuthor()->getFirstname(),
+                'authorLastName' => $NewMessage->getAuthor()->getLastname(),
                 'date' => $NewMessage->getdate()
             ]),
         );

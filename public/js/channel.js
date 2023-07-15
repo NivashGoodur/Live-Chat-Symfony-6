@@ -16,19 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
             messageToServer(data);
         }
     })
+
+    const messageToServer = (data) => {
+    
+        const url = window.location.href+ "/post-message";
+        formMessageContent = document.querySelector("#message_content");
+    
+        fetch(url, { // On envoie avec un post nos datas sur le endpoint /message de notre application
+            method: 'POST',
+            body: JSON.stringify(data) // On envoie les data sous format JSON
+        }).then((response) => {
+            formMessageContent.value = '';
+        }).catch((error) => {
+            console.log(error)
+        });
+    
+    }
 });
-
-const messageToServer = (data) => {
-
-    const url = window.location.href+ "/post-message";
-
-    fetch(url, { // On envoie avec un post nos datas sur le endpoint /message de notre application
-        method: 'POST',
-        body: JSON.stringify(data) // On envoie les data sous format JSON
-    }).then((response) => {
-        message.value = '';
-    }).catch((error) => {
-        console.log(error)
-    });
-
-}
