@@ -44,7 +44,8 @@ class ChatController extends AbstractController
         return $this->render('chat/channel.html.twig', [
             'form' => $form->createView(),
             'messages' => $messages,
-            'channels' => $channelRepository->findAll()
+            'channels' => $channelRepository->findAll(),
+            'channelId' => $channel->getId()
         ]);
     }
 
@@ -72,13 +73,13 @@ class ChatController extends AbstractController
         $messageRepository->save($NewMessage, 1);
 
         $update = new Update(
-            'https://localhost:8000/channel/1',
+            'https://localhost:8000/channel/' . $channel->getId(),
             json_encode([
                 'content' => $NewMessage->getContent(),
                 'authorFirstName' => $NewMessage->getAuthor()->getFirstname(),
                 'authorLastName' => $NewMessage->getAuthor()->getLastname(),
-                'date' => $NewMessage->getdate()
-            ]),
+                'date' => $NewMessage->getdate(),
+            ])
         );
 
         $hub->publish($update);
