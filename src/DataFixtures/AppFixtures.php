@@ -13,19 +13,20 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $faker = Factory::create('fr_FR');
+        $faker = Factory::create();
 
         $allUsers =[];
 
-        //Create 10 users
-        for($i=0; $i<10; $i++) {
+        //Create 10 users with "secret" password
+        for($i=1; $i<=10; $i++) {
             $user = new User();
             $user
                 ->setEmail($faker->email)
                 ->setRoles([])
-                ->setPassword("$2y$13\$A4vfyBhT6/8nkJGmG3HqKupc/vnjyBXTQbURKZUh1QEk1JHTD.HNC")
+                ->setPassword("$2y$13\$tCubkMf4tLXeiV95v6EhSuUavXSNOdRgtZcx8gdE5dOCJ/qR18KUa")
                 ->setFirstname($faker->firstName)
                 ->setLastname($faker->lastName)
+                ->setPhoto('avatar-'.$i.'.webp')
             ;
 
             $allUsers[] = $user;
@@ -37,6 +38,7 @@ class AppFixtures extends Fixture
         //Create 10 Channels
         for ($i=0; $i<10; $i++) {
             $channel = new Channel();
+            $channel->setTitle($faker->realText($maxNbChars = 50));
 
             $allChannels[] = $channel;
 
@@ -45,7 +47,6 @@ class AppFixtures extends Fixture
 
 
         //Create 100 messages between channel 1 and 10
-
         for($i=0; $i<100; $i++) {
 
             $user = 

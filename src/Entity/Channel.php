@@ -18,6 +18,9 @@ class Channel
     #[ORM\OneToMany(mappedBy: 'channel', targetEntity: Message::class)]
     private Collection $messages;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $title = null;
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
@@ -54,6 +57,18 @@ class Channel
                 $message->setChannel(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): static
+    {
+        $this->title = $title;
 
         return $this;
     }

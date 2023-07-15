@@ -21,10 +21,12 @@ class ChatController extends AbstractController
 {
     #[IsGranted('ROLE_USER')]
     #[Route('/', name: 'app_home')]
-    public function index(): Response
+    public function index(ChannelRepository $channelRepository): Response
     {
 
-        return $this->render('chat/chat.html.twig');
+        return $this->render('chat/chat.html.twig', [
+            'channels' => $channelRepository->findAll()
+        ]);
     }
 
     #[IsGranted('ROLE_USER')]
@@ -77,6 +79,7 @@ class ChatController extends AbstractController
                 'content' => $NewMessage->getContent(),
                 'authorFirstName' => $NewMessage->getAuthor()->getFirstname(),
                 'authorLastName' => $NewMessage->getAuthor()->getLastname(),
+                'authorPhoto' => $NewMessage->getAuthor()->getPhoto(),
                 'date' => $NewMessage->getdate(),
             ])
         );

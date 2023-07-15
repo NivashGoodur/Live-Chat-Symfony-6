@@ -7,7 +7,7 @@ const messageMercure = (jsonData, author) => {
         chatChannel.insertAdjacentHTML(
             'beforeend',
             `            <li class="d-flex justify-content-between mb-4">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+            <img src="https://localhost:8000/img/avatar/${jsonData.authorPhoto}" alt="avatar"
               class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
             <div class="card mask-custom w-100 author-1">
               <div class="card-header d-flex justify-content-between p-3"
@@ -39,7 +39,7 @@ const messageMercure = (jsonData, author) => {
                 </p>
               </div>
             </div>
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
+            <img src="https://localhost:8000/img/avatar/${jsonData.authorPhoto}" alt="avatar"
               class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
           </li>`
         );

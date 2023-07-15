@@ -3,18 +3,27 @@
     /* fallback for old browsers */
     background: linear-gradient(109.5deg, rgb(76, 221, 242) 11.2%, rgb(92, 121, 255) 91.1%);
 }
-    
+.gradient-security-pages {
+    background: linear-gradient(to bottom, #FF6B95, #8E238E);
+}
+
+::selection {
+    background-color: #ff9900;
+    color: #ffffff;
+  }
+  
+
 .mask-custom {
-background: rgba(24, 24, 16, .2);
-border-radius: 2em;
-backdrop-filter: blur(15px);
-border: 2px solid rgba(255, 255, 255, 0.05);
-background-clip: padding-box;
-box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+    background: rgba(24, 24, 16, .2);
+    border-radius: 2em;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
 }
 
 .chat-channel {
-    max-height: 705px;
+    max-height: 730px;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
@@ -25,4 +34,38 @@ box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
 
 .chat-channel .author-2 {
     background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+}
+
+/* For WebKit-based browsers */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+}
+
+/* Optional: To change the track color */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+#message_Send {
+    background: linear-gradient(135deg, #f53d68, #e62a6d, #c12773);
+
+}
+
+.form-send-message .mb-3:nth-child(1) {
+    display: block;
+    width: 75%;
+    margin-right: 15px;
+}
+
+#message_content {
+    background: linear-gradient(135deg, #ffa8bf, #ff82a1, #ff5c84);
+}
+
+.emails-user {
+    max-width: 50%;
+    margin: auto;
 }
