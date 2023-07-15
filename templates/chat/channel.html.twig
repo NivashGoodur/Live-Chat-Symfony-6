@@ -109,13 +109,16 @@
 <script src="{{ asset('js/messageMercure.js') }}"></script>
 
 <script>
-  const eventSource = new EventSource("{{ mercure('https://localhost:8000/channel/{id}')|escape('js') }}", { withCredentials: true });
+  const currentUrl = window.location.href;
+  const currentIdUrl = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+
+  const eventSource = new EventSource('{{ mercure("https://localhost:8000/channel/") }}' + currentIdUrl, { withCredentials: true });
+  
   eventSource.onmessage = event => {
     // Will be called every time an update is published by the server
     let author = '{{ author }}' ;
     messageMercure(JSON.parse(event.data), author);
   }
 </script>
-
 
 {% endblock %}
