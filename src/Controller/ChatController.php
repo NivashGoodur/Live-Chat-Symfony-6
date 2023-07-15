@@ -32,7 +32,6 @@ class ChatController extends AbstractController
     public function channel(Request $request, Channel $channel, HubInterface $hub, MessageRepository $messageRepository, ChannelRepository $channelRepository): Response
     {
 
-
         $messages = $messageRepository->findBy(['channel' => $channel->getId()], ['date' => 'DESC'], 5);
 
         $messages = array_reverse($messages);

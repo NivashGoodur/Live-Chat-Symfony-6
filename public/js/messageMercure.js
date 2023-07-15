@@ -1,9 +1,7 @@
 const messageMercure = (jsonData, author) => {
-    console.log(jsonData);
 
     let chatChannel = document.querySelector(".chat-channel");
     let dateMessage = jsonData.date.date.split('.')[0];
-    // console.log(JSON.parse(jsonData.author.name));
 
     if (author == 1) {
         chatChannel.insertAdjacentHTML(
@@ -46,4 +44,7 @@ const messageMercure = (jsonData, author) => {
           </li>`
         );
     }
+
+    //scroll to last message
+    chatChannel.scrollTop = chatChannel.scrollHeight;
 }

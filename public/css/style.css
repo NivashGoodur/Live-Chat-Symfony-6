@@ -13,10 +13,16 @@ background-clip: padding-box;
 box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
 }
 
-.chat-channel .author-1{
+.chat-channel {
+    max-height: 705px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.chat-channel .author-1 {
     background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
 }
 
-.chat-channel .author-2{
+.chat-channel .author-2 {
     background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
 }

@@ -10,7 +10,7 @@
 
       <div class="col-md-6 col-lg-12 col-xl-5 mb-4 mb-md-0">
 
-        <h5 class="font-weight-bold mb-3 text-center text-white">Member</h5>
+        <h5 class="font-weight-bold mb-3 text-center text-white">Channels</h5>
         <div class="card mask-custom">
           <div class="card-body">
             <ul class="list-unstyled mb-0">
@@ -19,16 +19,14 @@
               <li class="p-2 border-bottom" style="border-bottom: 1px solid rgba(255,255,255,.3) !important;">
                 <a href="{{ path("app_channel", {id : channel.id}) }}" class="d-flex justify-content-between link-light">
                   <div class="d-flex flex-row">
-                    <img src="https://picsum.photos/60/60?random={{ loop.index }}" alt="avatar"
+                    <img src="{{ asset("img/channel/channel-" ~ loop.index ~ '.jpg') }}" alt="avatar"
                       class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                    <div class="pt-1">
-                      <p class="fw-bold mb-0">John Doe</p>
-                      <p class="small text-white">Hello, Are you there?</p>
+                    <div class="pt-1 d-flex justify-content-center align-items-center">
+                      <p class="fw-bold mb-0">Channel {{ channel.id }}</p>
                     </div>
                   </div>
                   <div class="pt-1">
-                    <p class="small text-white mb-1">Just now</p>
-                    {# <span class="badge bg-danger float-end">1</span> #}
+                    <img src="{{ asset("img/right-long-solid.svg") }}" alt="">
                   </div>
                 </a>
               </li>
